@@ -60,14 +60,10 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const arrivalDate = expectedArrival ? new Date(expectedArrival) : null;
   const now = new Date();
 
-  let timeStr = '';
   let minsAway = '';
 
   if (arrivalDate) {
     const minutes = Math.floor((arrivalDate - now) / 60000);
-    const hours = arrivalDate.getHours().toString().padStart(2, '0');
-    const minutesPad = arrivalDate.getMinutes().toString().padStart(2, '0');
-    timeStr = `${hours}:${minutesPad}`;
     minsAway = `${minutes} min`;
   } else {
     minsAway = 'Unknown';

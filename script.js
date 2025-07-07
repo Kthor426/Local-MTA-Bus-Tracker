@@ -82,7 +82,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         const depM = depDate.getMinutes().toString().padStart(2, '0');
         details += `<br><em>Scheduled to depart terminal at ${depH}:${depM}</em>`;
       } else {
-        details += `<br><em>At terminal — Passed departure time</em>`;
+        details += `<br><em>At Terminal — Passed departure time</em>`;
       }
     } else {
       details += `<br><em>At Terminal — Passed departure time</em>`;

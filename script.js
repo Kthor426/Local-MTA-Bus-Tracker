@@ -80,10 +80,12 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       details += `<br><em>Scheduled to depart terminal at ${depH}:${depM}</em>`;
     } else {
       details += `<br><em>At Terminal</em>`;
-    else if (isAtTerminal) {
-      details += `<br><em>At Terminal</em>`;
     }
   }
+
+    if (isAtTerminal) {
+    details += `<br><em>At Terminal</em>`;
+    }
 
   details += `</p>`;
   output += details;

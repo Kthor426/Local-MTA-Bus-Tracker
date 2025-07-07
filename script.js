@@ -74,7 +74,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
     timeStr = '??:??';
   }
 
-  let details = `<p>${routeImage} ${minsAway} (${timeStr})`;
+  let details = `<p>${routeImage} ${minsAway}`;
 
 
   if (isAtTerminal && expectedArrival) {

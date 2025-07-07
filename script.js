@@ -1,7 +1,7 @@
 const apiKey = '9e82d6fc-7ab9-4f2e-a518-ffc37d9af15c';
-const stopIds = ['MTA_553456', 'MTA_550572', 'MTA_551974', 'MTA_551950'];
+const stopIds = ['MTA_553332', 'MTA_550572', 'MTA_551974', 'MTA_551950'];
 const stopNames = {
-  'MTA_553456': { name: 'Q18 – Astoria', direction: 'north' },
+  'MTA_553332': { name: 'Q18 – Astoria', direction: 'north' },
   'MTA_550572': { name: 'Q18 – Maspeth', direction: 'north' },
   'MTA_551974': { name: 'Q67 – Court Sq', direction: 'south' },
   'MTA_551950': { name: 'Q67 – Ridgewood', direction: 'south' },
@@ -44,10 +44,8 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const monitored = mvj.Monitored;
   const progressStatus = mvj.ProgressStatus || '';
 
-  //const isAtTerminal = !monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
-  const isAtTerminal = !monitored || progressStatus.includes('prevTrip');
-  const isNotAtTerminal = progressStatus.includes('layover') || progressStatus.includes('prevTrip');
-  const late = monitored && (progressStatus.includes('layover') || progressStatus.includes('prevTrip'));
+  const isAtTerminal = !monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
+  const isNotAtTerminal = monitored && progressStatus.includes('layover');
   const hasNoETA = !expectedArrival;
 
 
@@ -75,7 +73,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   let details = `<p>${routeImage} <span class="minutes">${minsAway}</span>`;
 
 
-  if ((isAtTerminal || isNotAtTerminal) && expectedArrival) {
+  if (isAtTerminal && expectedArrival) {
     if (departureTime) {
       const depDate = new Date(departureTime);
       const now = new Date();
@@ -83,7 +81,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       if (isAtTerminal && depDate > now) {
         const depH = depDate.getHours().toString().padStart(2, '0');
         const depM = depDate.getMinutes().toString().padStart(2, '0');
-        details += `<br><em>At Terminal — Scheduled departure: ${depH}:${depM}</em>`;
+        details += `<br><em>Scheduled Departure: ${depH}:${depM}</em>`;
       } else if (isNotAtTerminal) {
         details += `<br><em>Not at Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       } else if (isAtTerminal) {

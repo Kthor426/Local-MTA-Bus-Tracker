@@ -28,7 +28,7 @@ async function fetchBusTimes(stopId) {
 
 
     if (!stopData || stopData.length === 0) {
-      output += `<p>No buses currently en-route.</p>`;
+      output += `<br><em>No buses currently en-route.</em>`;
     } else {
 stopData.slice(0, 3).forEach((visit, index, array) => {
   const mvj = visit.MonitoredVehicleJourney;
@@ -77,9 +77,9 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       const depDate = new Date(departureTime);
       const depH = depDate.getHours().toString().padStart(2, '0');
       const depM = depDate.getMinutes().toString().padStart(2, '0');
-      details += `<br><em>At terminal — Scheduled to depart at ${depH}:${depM}</em>`;
+      details += `<br><em>At Terminal — Scheduled to depart at ${depH}:${depM}</em>`;
     } else {
-      details += `<br><em>At terminal</em>`;
+      details += `<br><em>At Terminal</em>`;
     }
   }
 

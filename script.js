@@ -86,7 +86,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       } else if (depDate < now) {
         details += `<br><em>Late to Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       }
-    }
+    }}
 
   details += `</p>`;
   output += details;

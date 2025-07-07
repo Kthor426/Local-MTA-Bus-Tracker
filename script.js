@@ -69,7 +69,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
     minsAway = 'At Stop';
   }
 
-  let details = `<p>${routeImage} <span class="minutes">${minsAway}</span> min`;
+  let details = `<p>${routeImage} <span class="minutes">${minsAway}</span>`;
 
 
   if (isAtTerminal && expectedArrival) {

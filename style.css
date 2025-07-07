@@ -13,7 +13,6 @@ h1, h2 {
 .stop {
   margin-bottom: 30px;
   padding-bottom: 10px;
-  /* border-bottom: 1px solid #444; <-- remove this */
 }
 
 
@@ -26,12 +25,10 @@ em {
   font-weight: normal;
 }
 
-/* Add vertical spacing between multiple buses at the same stop */
 .stop p + p {
   margin-top: 12px;
 }
 
-/* Add padding between arrival time and terminal/scheduled note */
 .stop em {
   display: block;
   margin-top: 4px;
@@ -77,5 +74,5 @@ em {
 .no-buses {
   font-style: italic;
   font-weight: normal;
-  color: white; /* or a subtle gray if you want it softer */
+  color: white;
 }

@@ -86,7 +86,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       }
     } else {
       details += `<br><em>At Terminal</em>`;
-    }
+    }}
 
   details += `</p>`;
   output += details;

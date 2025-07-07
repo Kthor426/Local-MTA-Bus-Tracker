@@ -66,5 +66,5 @@ em {
 
 #northboundStops,
 #southboundStops {
-  flex: 1;
+  flex: 0.39;
 }

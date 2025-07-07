@@ -153,4 +153,4 @@ async function displayBusTimes() {
 
 
 displayBusTimes();
-setInterval(displayBusTimes, 10000);
+setInterval(displayBusTimes, 20000);

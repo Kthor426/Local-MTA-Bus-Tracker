@@ -1,7 +1,7 @@
 const apiKey = '9e82d6fc-7ab9-4f2e-a518-ffc37d9af15c';
-const stopIds = ['MTA_403914', 'MTA_550572', 'MTA_551974', 'MTA_551950'];
+const stopIds = ['MTA_550585', 'MTA_550572', 'MTA_551974', 'MTA_551950'];
 const stopNames = {
-  'MTA_403914': { name: 'Q18 – Astoria', direction: 'north' },
+  'MTA_550585': { name: 'Q18 – Astoria', direction: 'north' },
   'MTA_550572': { name: 'Q18 – Maspeth', direction: 'north' },
   'MTA_551974': { name: 'Q67 – Court Sq', direction: 'south' },
   'MTA_551950': { name: 'Q67 – Ridgewood', direction: 'south' },
@@ -82,10 +82,11 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         const depH = depDate.getHours().toString().padStart(2, '0');
         const depM = depDate.getMinutes().toString().padStart(2, '0');
         details += `<br><em>At Terminal — Scheduled departure: ${depH}:${depM}</em>`;
+      } else if (late) {
+        details += `<br><em>Not at Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       } else if (isAtTerminal) {
-        details += `<br><em>Late from Terminal — Scheduled departure: ${depH}:${depM}</em>`;
-      } else if (late && depDate > now) {
-        details += `<br><em>Late — Scheduled departure: ${depH}:${depM}</em>`;
+        details += `<br><em>At Terminal — Passed departure: ${depH}:${depM}</em>`;
+        
       }
     }}
 

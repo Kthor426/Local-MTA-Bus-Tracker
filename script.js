@@ -34,7 +34,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const mvj = visit.MonitoredVehicleJourney;
   const line = mvj.LineRef;
   const routeNumber = line.split('_').pop().toUpperCase();
-  const routeImage = `<img src="img/${routeNumber}.PNG" alt="${routeNumber}" style="height: 24px; vertical-align: -6px; margin-right: 5px;">`;
+  const routeImage = `<img src="img/${routeNumber}.PNG" alt="${routeNumber}" style="height: 24px; vertical-align: -5px; margin-right: 3px;">`;
 
 
   const dest = mvj.DestinationName;

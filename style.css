@@ -68,3 +68,8 @@ em {
 #southboundStops {
   flex: 1;
 }
+
+.minutes {
+  font-size 1.8em;
+  font-weight bold;
+}

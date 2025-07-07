@@ -1,6 +1,6 @@
 const apiKey = '9e82d6fc-7ab9-4f2e-a518-ffc37d9af15c';
-const stopIds = ['MTA_550585', 'MTA_550572', 'MTA_551974', 'MTA_551950', 
-                 //'MTA_551563'
+const stopIds = ['MTA_550585', 'MTA_550572', 'MTA_551974', 'MTA_551950' 
+                 //,'MTA_551563'
                 ];
 const stopNames = {
   'MTA_550585': { name: 'Q18 – Astoria', direction: 'north' },

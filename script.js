@@ -47,6 +47,11 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const isAtTerminal = !monitored || progressStatus.includes('prevTrip') || progressStatus.includes('layover');
   const hasNoETA = !expectedArrival;
 
+  if (isAtTerminal && hasNoETA) {
+    console.log(`Skipping ${line} — at terminal with no ETA`);
+    return;
+  }
+  
   const distanceRaw = mvj.Extensions?.Distances?.DistanceFromStop || 0;
   const milesAway = distanceRaw ? (distanceRaw / 1609.34).toFixed(1) : '';
 
@@ -88,7 +93,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   output += details;
 
   // Add divider between buses (but not after the last one)
-  if (index < array.length - 1) {
+  if (index < array.length - 1 && !hasNoETA) {
     output += `<div class="bus-divider"></div>`;
   }
 });

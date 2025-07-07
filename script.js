@@ -76,6 +76,8 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
     if (departureTime) {
       const depDate = new Date(departureTime);
       const now = new Date(now.getTime() + 60000);
+      now.setSeconds(0);
+      now.setMilliseconds(0);
       if (isAtTerminal && depDate > now) {
         const depH = depDate.getHours().toString().padStart(2, '0');
         const depM = depDate.getMinutes().toString().padStart(2, '0');

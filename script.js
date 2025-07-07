@@ -72,7 +72,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   let details = `<p>${routeImage} <span class="minutes">${minsAway}</span>`;
 
 
-  if (isAtTerminal && expectedArrival) {
+  if (isAtTerminal && departureTime) {
     if (departureTime) {
       const depDate = new Date(departureTime);
       const depH = depDate.getHours().toString().padStart(2, '0');
@@ -82,10 +82,6 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       details += `<br><em>At Terminal</em>`;
     }
   }
-
-    if (isAtTerminal) {
-    details += `<br><em>At Terminal</em>`;
-    }
 
   details += `</p>`;
   output += details;

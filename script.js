@@ -66,7 +66,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
     const minutes = Math.floor((arrivalDate - now) / 60000);
     minsAway = `${minutes} min`;
   } else {
-    minsAway = 'At stop';
+    minsAway = 'At Stop';
   }
 
   let details = `<p>${routeImage} ${minsAway}`;

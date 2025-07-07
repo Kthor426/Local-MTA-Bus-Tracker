@@ -73,3 +73,9 @@ em {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+.no-buses {
+  font-style: italic;
+  font-weight: normal;
+  color: white; /* or a subtle gray if you want it softer */
+}

@@ -28,7 +28,7 @@ async function fetchBusTimes(stopId) {
 
 
     if (!stopData || stopData.length === 0) {
-      output += `<br><em>No buses currently en-route.</em>`;
+      output += `<br><em>No buses currently en-route</em>`;
     } else {
 stopData.slice(0, 3).forEach((visit, index, array) => {
   const mvj = visit.MonitoredVehicleJourney;

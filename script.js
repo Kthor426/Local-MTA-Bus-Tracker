@@ -27,8 +27,8 @@ async function fetchBusTimes(stopId) {
     let output = `<div class="stop${isSouthbound ? ' southbound' : ''}"><h2>${stopTitle}</h2><div class="stop-divider"></div>`;
 
 
-    if (!stopData || stopData.length === 0) {
-      output += `<br><em>No buses currently en-route</em>`;
+if (!stopData || stopData.length === 0) {
+  output += `<p class="no-buses">No buses currently en-route</p>`;
     } else {
 stopData.slice(0, 3).forEach((visit, index, array) => {
   const mvj = visit.MonitoredVehicleJourney;

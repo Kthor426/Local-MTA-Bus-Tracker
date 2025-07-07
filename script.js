@@ -93,9 +93,9 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   output += details;
 
   // Add divider between buses (but not after the last one)
-  if (index < array.length - 1) {
-    output += `<div class="bus-divider"></div>`;
-  }
+  if (index < array.length - 1 && !hasNoETA) {
+  output += `<div class="bus-divider"></div>`;
+}
 });
 
 

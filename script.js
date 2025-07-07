@@ -30,7 +30,21 @@ async function fetchBusTimes(stopId) {
 if (!stopData || stopData.length === 0) {
   output += `<p class="no-buses">No buses currently en-route</p>`;
     } else {
-stopData.slice(0, 3).forEach((visit, index, array) => {
+  // Filter to exclude buses that are at terminal with no ETA
+  const filteredData = stopData
+    .filter(visit => {
+      const mvj = visit.MonitoredVehicleJourney;
+      const expectedArrival = mvj?.MonitoredCall?.ExpectedArrivalTime;
+      const monitored = mvj?.Monitored;
+      const progressStatus = mvj?.ProgressStatus || '';
+      const isAtTerminal = !monitored || progressStatus.includes('prevTrip') || progressStatus.includes('layover');
+      const hasNoETA = !expectedArrival;
+
+      return !(isAtTerminal && hasNoETA);
+    })
+    .slice(0, 3); // still limit to 3 buses max
+
+  filteredData.forEach((visit, index, array) => {
   const mvj = visit.MonitoredVehicleJourney;
   const line = mvj.LineRef;
   const routeNumber = line.split('_').pop().toUpperCase();
@@ -46,11 +60,6 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
 
   const isAtTerminal = !monitored || progressStatus.includes('prevTrip') || progressStatus.includes('layover');
   const hasNoETA = !expectedArrival;
-  
-  if (isAtTerminal && hasNoETA) {
-    console.log(`Skipping ${line} — at terminal with no ETA`);
-    return null;
-  }
   
   const distanceRaw = mvj.Extensions?.Distances?.DistanceFromStop || 0;
   const milesAway = distanceRaw ? (distanceRaw / 1609.34).toFixed(1) : '';
@@ -93,7 +102,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   output += details;
 
   // Add divider between buses (but not after the last one)
-  if (index < array.length - 1 && !hasNoETA) {
+  if (index < array.length - 1) {
   output += `<div class="bus-divider"></div>`;
 }
 });

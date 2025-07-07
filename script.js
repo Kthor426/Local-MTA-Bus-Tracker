@@ -83,7 +83,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         details += `<br><em>At Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       } else if (isAtTerminal) {
         details += `<br><em>At Terminal — Passed departure time</em>`;
-      } else if (depDate < now) {
+      } else if (depDate < departureTime) {
         details += `<br><em>Late to Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       }
     }}

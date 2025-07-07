@@ -84,7 +84,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         details += `<br><em>Late — Scheduled Departure:</em>`;
     }
   }
-
+}
   
   details += `</p>`;
   output += details;

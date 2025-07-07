@@ -76,17 +76,16 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
     if (departureTime) {
       const depDate = new Date(departureTime);
       const now = new Date();
-
       if (isAtTerminal && depDate > now) {
         const depH = depDate.getHours().toString().padStart(2, '0');
         const depM = depDate.getMinutes().toString().padStart(2, '0');
-        details += `<br><em>Scheduled Departure: ${depH}:${depM}</em>`;
+        details += <br><em>Scheduled Departure: ${depH}:${depM}</em>;
       } else {
-        details += `<br><em>Late — Scheduled Departure: ${depH}:${depM}</em>`;
-        
-      }
-    }}
+        details += <br><em>Late — Scheduled Departure:</em>;
+    }
+  }
 
+  
   details += `</p>`;
   output += details;
 

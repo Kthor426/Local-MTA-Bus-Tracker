@@ -1,5 +1,5 @@
 const apiKey = '9e82d6fc-7ab9-4f2e-a518-ffc37d9af15c';
-const stopIds = ['MTA_550585', 'MTA_550572', 'MTA_551974', 'MTA_551950'];
+const stopIds = ['MTA_403914', 'MTA_550572', 'MTA_551974', 'MTA_551950'];
 const stopNames = {
   'MTA_550585': { name: 'Q18 – Astoria', direction: 'north' },
   'MTA_550572': { name: 'Q18 – Maspeth', direction: 'north' },
@@ -45,7 +45,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const progressStatus = mvj.ProgressStatus || '';
 
   const isAtTerminal = !monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
-  const Late = monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
+  const late = monitored && (progressStatus.includes('layover') || progressStatus.includes('prevTrip'));
   const hasNoETA = !expectedArrival;
 
 
@@ -83,9 +83,9 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         const depM = depDate.getMinutes().toString().padStart(2, '0');
         details += `<br><em>At Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       } else if (isAtTerminal) {
-        details += `<br><em>At Terminal — Passed departure time</em>`;
-      } else if (Late && depDate > now) {
-        details += `<br><em>Late to Terminal — Scheduled departure: ${depH}:${depM}</em>`;
+        details += `<br><em>Late from Terminal — Scheduled departure: ${depH}:${depM}</em>`;
+      } else if (late && depDate > now) {
+        details += `<br><em>Late — Scheduled departure: ${depH}:${depM}</em>`;
       }
     }}
 

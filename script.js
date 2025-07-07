@@ -75,10 +75,12 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   if (isAtTerminal && expectedArrival) {
     if (departureTime) {
       const depDate = new Date(departureTime);
-      const now = new Date(now.getTime() + 60000);
-      now.setSeconds(0);
-      now.setMilliseconds(0);
-      if (isAtTerminal && depDate > now) {
+      const now = new Date();
+      const nextMinute = new Date(now);
+      nextMinute.setSeconds(0);
+      nextMinute.setMilliseconds(0);
+      nextMinute.setMinutes(now.getMinutes() + 1);
+      if (isAtTerminal && depDate > nextMinute) {
         const depH = depDate.getHours().toString().padStart(2, '0');
         const depM = depDate.getMinutes().toString().padStart(2, '0');
         details += `<br><em>Scheduled Departure: ${depH}:${depM}</em>`;

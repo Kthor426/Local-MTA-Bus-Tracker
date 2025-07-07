@@ -77,8 +77,10 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
       const depDate = new Date(departureTime);
       const depH = depDate.getHours().toString().padStart(2, '0');
       const depM = depDate.getMinutes().toString().padStart(2, '0');
-      details += `<br><em>At Terminal — Scheduled to depart at ${depH}:${depM}</em>`;
+      details += `<br><em>Scheduled to depart terminal at ${depH}:${depM}</em>`;
     } else {
+      details += `<br><em>At Terminal</em>`;
+    else if (isAtTerminal) {
       details += `<br><em>At Terminal</em>`;
     }
   }

@@ -49,7 +49,6 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
 
   if (isAtTerminal && hasNoETA) {
     console.log(`Skipping ${line} — at terminal with no ETA`);
-    return;
   }
   
   const distanceRaw = mvj.Extensions?.Distances?.DistanceFromStop || 0;
@@ -93,7 +92,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   output += details;
 
   // Add divider between buses (but not after the last one)
-  if (index < array.length - 1 && !arrivalDate) {
+  if (index < array.length - 1) {
     output += `<div class="bus-divider"></div>`;
   }
 });

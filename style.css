@@ -34,6 +34,7 @@ em {
   margin-top: 5px;
   font-style: italic;
   font-weight: normal;
+  color: lightgray;
 }
 
 .bus-divider {
@@ -74,5 +75,5 @@ em {
 .no-buses {
   font-style: italic;
   font-weight: normal;
-  color: white;
+  color: lightgray;
 }

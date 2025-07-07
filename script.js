@@ -46,9 +46,10 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
 
   const isAtTerminal = !monitored || progressStatus.includes('prevTrip') || progressStatus.includes('layover');
   const hasNoETA = !expectedArrival;
-
+  
   if (isAtTerminal && hasNoETA) {
     console.log(`Skipping ${line} — at terminal with no ETA`);
+    return null;
   }
   
   const distanceRaw = mvj.Extensions?.Distances?.DistanceFromStop || 0;

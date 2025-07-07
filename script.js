@@ -72,16 +72,21 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   let details = `<p>${routeImage} <span class="minutes">${minsAway}</span>`;
 
 
-  if (isAtTerminal && departureTime) {
+  if (isAtTerminal && expectedArrival) {
     if (departureTime) {
       const depDate = new Date(departureTime);
-      const depH = depDate.getHours().toString().padStart(2, '0');
-      const depM = depDate.getMinutes().toString().padStart(2, '0');
-      details += `<br><em>Scheduled to depart terminal at ${depH}:${depM}</em>`;
+      const now = new Date();
+    
+      if (depDate > now) {
+        const depH = depDate.getHours().toString().padStart(2, '0');
+        const depM = depDate.getMinutes().toString().padStart(2, '0');
+        details += `<br><em>Scheduled to depart terminal at ${depH}:${depM}</em>`;
+      } else {
+        details += `<br><em>At Terminal</em>`;
+      }
     } else {
       details += `<br><em>At Terminal</em>`;
     }
-  }
 
   details += `</p>`;
   output += details;

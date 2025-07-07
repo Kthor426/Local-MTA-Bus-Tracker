@@ -44,7 +44,15 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const monitored = mvj.Monitored;
   const progressStatus = mvj.ProgressStatus || '';
 
-  const isAtTerminal = !monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
+  const monitored = journey?.Monitored;
+  const progressStatus = journey?.ProgressStatus || '';
+  const hasLocation = !!journey?.VehicleLocation?.Latitude;
+  
+  const isAtTerminal =
+    !monitored ||
+    progressStatus.includes('layover') ||
+    progressStatus.includes('prevTrip') ||
+    (!hasLocation && progressStatus.length === 0);
   const hasNoETA = !expectedArrival;
 
 
@@ -83,7 +91,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         details += `<br><em>At Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       } else if (isAtTerminal) {
         details += `<br><em>At Terminal — Passed departure time</em>`;
-      } else if (depDate < departureTime) {
+      } else if (depDate < now) {
         details += `<br><em>Late to Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       }
     }}

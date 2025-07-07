@@ -88,10 +88,6 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
     }
   }
 
-  if (milesAway) {
-    details += `<br>${milesAway} mi away`;
-  }
-
   details += `</p>`;
   output += details;
 

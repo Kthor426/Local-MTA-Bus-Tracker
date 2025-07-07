@@ -44,7 +44,9 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   const monitored = mvj.Monitored;
   const progressStatus = mvj.ProgressStatus || '';
 
-  const isAtTerminal = !monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
+  //const isAtTerminal = !monitored || progressStatus.includes('layover') || progressStatus.includes('prevTrip');
+  const isAtTerminal = !monitored || progressStatus.includes('prevTrip');
+  const isNotAtTerminal = progressStatus.includes('layover') || progressStatus.includes('prevTrip');
   const late = monitored && (progressStatus.includes('layover') || progressStatus.includes('prevTrip'));
   const hasNoETA = !expectedArrival;
 
@@ -73,7 +75,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
   let details = `<p>${routeImage} <span class="minutes">${minsAway}</span>`;
 
 
-  if (isAtTerminal && expectedArrival) {
+  if ((isAtTerminal || isNotAtTerminal) && expectedArrival) {
     if (departureTime) {
       const depDate = new Date(departureTime);
       const now = new Date();
@@ -82,7 +84,7 @@ stopData.slice(0, 3).forEach((visit, index, array) => {
         const depH = depDate.getHours().toString().padStart(2, '0');
         const depM = depDate.getMinutes().toString().padStart(2, '0');
         details += `<br><em>At Terminal — Scheduled departure: ${depH}:${depM}</em>`;
-      } else if (late && depDate > now) {
+      } else if (isNotAtTerminal) {
         details += `<br><em>Not at Terminal — Scheduled departure: ${depH}:${depM}</em>`;
       } else if (isAtTerminal) {
         details += `<br><em>At Terminal — Passed departure: ${depH}:${depM}</em>`;

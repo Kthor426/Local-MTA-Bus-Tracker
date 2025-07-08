@@ -56,9 +56,12 @@ if (!stopData || stopData.length === 0) {
   const expectedArrival = mvj.MonitoredCall.ExpectedArrivalTime;
   const departureTime = mvj.OriginAimedDepartureTime;
   const monitored = mvj.Monitored;
-  const progressStatus = mvj.ProgressStatus || '';
+  //const progressStatus = mvj.ProgressStatus || '';
 
-  const isAtTerminal = !monitored || progressStatus.includes('prevTrip') || progressStatus.includes('layover');
+  //const isAtTerminal = !monitored || progressStatus.includes('prevTrip') || progressStatus.includes('layover');
+  const progressStatus = mvj.ProgressStatus?.toLowerCase() || '';
+  const isAtTerminal = ['layover', 'prevtrip', 'firststop'].some(term => progressStatus.includes(term));
+
   const hasNoETA = !expectedArrival;
   
   const distanceRaw = mvj.Extensions?.Distances?.DistanceFromStop || 0;

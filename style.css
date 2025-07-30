@@ -3,10 +3,11 @@ body {
   color: white;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
- /* margin: 20px;*/
+  /* margin: 20px;*/
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: bold;
 }
 
@@ -14,7 +15,6 @@ h1, h2 {
   margin-bottom: 30px;
   padding-bottom: 10px;
 }
-
 
 .stop p {
   margin: 6px 0;
